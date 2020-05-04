@@ -3,6 +3,18 @@ Simple tool to aggregate data during pentest
 
 At the first stage result stored in files in directory "output"
 
+Results from:
+
+* [Shodan](https://www.shodan.io/)
+
+* xml output [masscan](https://github.com/robertdavidgraham/masscan) ([deb](https://pkgs.org/download/masscan) package)
+
+* [dirb](https://tools.kali.org/web-applications/dirb) ([deb](https://pkgs.org/download/dirb) package)
+
+* [sslyze](https://github.com/nabla-c0d3/sslyze) library to check TLS/SSL server settings
+
+Additional idea/feature: make request in parallel (for dirb, tlscheck command) to get result more faster
+
 ## Hot to use
 
 ```
@@ -25,6 +37,20 @@ Options:
   -h, --help            Show this message and exit.
 ```
 Where *'FIN'* is the file, contain list of DNS name
+
+List of DNS which used
+```
+    "google"    : "8.8.8.8",
+    "opendns"   : "208.67.222.222",
+    "comodo"    : "8.26.56.26",
+    "level3"    : "209.244.0.3",
+    "advantage" : "156.154.70.1",
+    # "opennic"   : "46.151.208.154",
+    "dyn"       : "216.146.35.35",
+    "safedns"   : "195.46.39.39",
+    "watch"     : "84.200.69.80"
+```
+Sometimes "openic" thinks for a very long time, so, at this moment make a comment for this DNS server.
 
 
 * **mdirb**
