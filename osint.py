@@ -452,7 +452,7 @@ class Osint(object):
                         else:
                             output_ip.update({host : [port_key]})
 
-                time.sleep(1)
+                time.sleep(2)
 
         click.secho("\nResult search engine 'Shodan' (sorted by ip):")
         click.secho(fout_ip, fg="green")
@@ -609,7 +609,8 @@ class Osint(object):
                                                                        sslyze.ScanCommand.TLS_1_0_CIPHER_SUITES,
                                                                        sslyze.ScanCommand.TLS_1_1_CIPHER_SUITES,
                                                                        sslyze.ScanCommand.TLS_1_2_CIPHER_SUITES,
-                                                                       sslyze.ScanCommand.TLS_1_3_CIPHER_SUITES}
+                                                                       sslyze.ScanCommand.TLS_1_3_CIPHER_SUITES,
+                                                                       sslyze.ScanCommand.CERTIFICATE_INFO}
                                                         )
 
             scanner.queue_scan(request_for_check)
@@ -660,6 +661,16 @@ class Osint(object):
                 else:
                     tls_result.update({"TLS v1.3": res_tls_v13.is_tls_protocol_version_supported})
 
+                try:
+                    res_cert_info = scan_result.scan_commands_results[sslyze.ScanCommand.CERTIFICATE_INFO]
+                except KeyError:
+                    tls_result.update({"cert info": "don't know"})
+                else:
+                    # print(res_cert_info)
+                    for item in res_cert_info.certificate_deployments[0].received_certificate_chain:
+                        # print(res_cert_info.certificate_deployments[0].received_certificate_chain)
+                        print(item.not_valid_after)
+                        print("*****")
                 try:
                     res_robot = scan_result.scan_commands_results[sslyze.ScanCommand.ROBOT]
 

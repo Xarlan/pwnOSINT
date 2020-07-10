@@ -1,5 +1,5 @@
 # pwnOSINT
-Simple tool to aggregate data during pentest
+Simple tool to aggregate data to file during pentest
 
 At the first stage result stored in files in directory "output"
 
@@ -80,6 +80,12 @@ Options:
 ```
 Where *'FIN'* is the file, which contain list of ip-address to get information
 
+How to get api-key Shodan
+
+* go to [Shodan](https://www.shodan.io/)
+* login or register for your account
+* my account -> Overview
+
 * **tlscheck**
 
 ```
@@ -133,12 +139,16 @@ Where *'XML'* is the file, where store result of [masscan](https://github.com/ro
 
 
 ## Installation and usage
+
+Working environment: Debian 10
+
 * ```$git clone https://github.com/Xarlan/pwnOSINT.git```
 * ```$cd pwnOSINT```
 * ```$python3 -m venv /path/to/new/virtual/environment/venv```
 * to activate virtual envinronment: ```. venv/bin/activate```
 * it is recommended upgrade pip ```pip install --upgrade pip```
 * ```$pip install -r requirements.txt```
+* if there are some problems with pycurl, try ```sudo apt install libcurl4-gnutls-dev librtmp-dev```
 * ```$./osint.py <some_command>```
 
 
