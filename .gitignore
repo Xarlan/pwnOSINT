@@ -1,2 +1,6 @@
 output/*
 venv/*
+src/*
+.idea/*
+test*.py
+__pycache__/*
